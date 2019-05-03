@@ -39,20 +39,16 @@ try:
 except:
 	lo = False
 
-#print(not_submitted[0].text)
 while(lo):
-	try:
-		#print(len(not_submitted))
+	try:		
 		course = not_submitted
 		course.click()
 		dropboxes = driver.find_elements_by_tag_name('select')
 		for options in dropboxes:
 			Select(options).select_by_value(val)
-		#options.select_by_value('4')
 		submitfeed = driver.find_elements_by_class_name('btn-success')
 		submitfeed[1].click()
 		navtofeedpage()
-		#not_submitted = driver.find_elements_by_class_name('glyphicon-remove')
 		try:
 			not_submitted = driver.find_element_by_class_name('glyphicon-remove')
 			lo = True
@@ -61,4 +57,3 @@ while(lo):
 	except:
 		pass
 
-	#dropboxes.select_by_value('4')
