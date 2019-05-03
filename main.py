@@ -33,14 +33,17 @@ submit_box.click()
 time.sleep(1.5)
 
 navtofeedpage()
+try:
+	not_submitted = driver.find_element_by_class_name('glyphicon-remove')
+	lo = True
+except:
+	lo = False
 
-not_submitted = driver.find_elements_by_class_name('glyphicon-remove')
-
-print(not_submitted[0].text)
-while(len(not_submitted) != 0):
+#print(not_submitted[0].text)
+while(lo):
 	try:
-		print(len(not_submitted))
-		course = not_submitted[0]
+		#print(len(not_submitted))
+		course = not_submitted
 		course.click()
 		dropboxes = driver.find_elements_by_tag_name('select')
 		for options in dropboxes:
@@ -49,7 +52,12 @@ while(len(not_submitted) != 0):
 		submitfeed = driver.find_elements_by_class_name('btn-success')
 		submitfeed[1].click()
 		navtofeedpage()
-		not_submitted = driver.find_elements_by_class_name('glyphicon-remove')
+		#not_submitted = driver.find_elements_by_class_name('glyphicon-remove')
+		try:
+			not_submitted = driver.find_element_by_class_name('glyphicon-remove')
+			lo = True
+		except:
+			lo = False
 	except:
 		pass
 
