@@ -3,6 +3,7 @@ import sys
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
+#from selenium.remote import connect
 
 import time
 
@@ -17,9 +18,9 @@ def navtofeedpage():
 
 
 opts = FirefoxOptions()
-opts.add_argument("--headless")
-driver = webdriver.Firefox()
-
+#opts.add_argument("--headless")
+driver = webdriver.Firefox(options = opts)
+#driver = webdriver.Remote(desired_capabilities=webdriver.DesiredCapabilities.HTMLUNIT)
 driver.get('http://www.nitandhra.ac.in/student/auth/login')
 
 id_box = driver.find_element_by_name('identity')
@@ -56,4 +57,4 @@ while(lo):
 			lo = False
 	except:
 		pass
-
+print("Done!")
